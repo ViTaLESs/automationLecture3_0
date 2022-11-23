@@ -1,20 +1,23 @@
 package org.example;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Main {
+public class Test1_SearchByUid {
+
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+        Logger log = Logger.getLogger(Test1_SearchByUid.class);
+        log.info("Hello world!");
 
         WebDriver driver = new ChromeDriver();
-
-        driver.get("https://hof-bong-preprod.playticorp.com/");
-        //driver.navigate().to("https://hof-bong-preprod.playticorp.com/");
+        String siteUrl = "URL";
+        driver.get(siteUrl);
+        log.debug("Switch to url - " + siteUrl);
 
         try {
             Thread.sleep(5000);
@@ -23,7 +26,9 @@ public class Main {
         }
 
         WebElement inputPasswordField = driver.findElement(By.xpath(".//input[@type='email']"));
-        inputPasswordField.sendKeys("bong_test.user@playtika.com");
+        inputPasswordField.sendKeys("login");
+        log.info("Auto test user login to the system");
+        log.info("Send auto test user email");
         inputPasswordField.sendKeys(Keys.ENTER);
 
         try {
@@ -33,7 +38,8 @@ public class Main {
         }
 
         WebElement passInput = driver.findElement(By.xpath(".//input[@name='passwd']"));
-        passInput.sendKeys("Purn#1983");
+        passInput.sendKeys("pass");
+        log.info("Send auto test user pass");
 
         WebElement buttonNext = driver.findElement(By.xpath(".//input[@type='submit']"));
         buttonNext.click();
@@ -44,6 +50,7 @@ public class Main {
         //3. Get Balance
 
         driver.manage().window().maximize();
+        log.info("Maximize window");
 
         try {
             Thread.sleep(3000);
@@ -51,8 +58,9 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        WebElement searchInputField = driver.findElement(By.xpath(".//input[@data-qa-modifier='player-search']"));
+        WebElement searchInputField = driver.findElement(By.xpath(".//div[@class='ant-card-body']//input[@data-qa-modifier='player-search']"));
         searchInputField.sendKeys("175598218");
+        log.info("Type test user id into player search field - 175598218");
         searchInputField.sendKeys(Keys.ENTER);
 
         try {
@@ -64,30 +72,14 @@ public class Main {
         WebElement balanceField = driver.findElement(By.cssSelector("tr[data-row-key='balance'] span"));
         String balance = balanceField.getText();
 
-        System.out.println(balance);
-        System.out.println("Result -> " + "1,028,527,338.50".equals(balance));
+        log.info("Get user balance -> " + balance);
+
+        if ("11,392,519,547,498.55".equals(balance)) {
+            log.info("User balance is correct!");
+        } else {
+            log.error("User balance is INCORRECT!!! User balance -> " + balance);
+        }
 
         //driver.quit();
-    }
-
-    public void switchToFrame(String inputLocator) {
-        //driver.switchTo().frame(driver.findElement(By.xpath(inputLocator)));
-        //actions
-        //driver.switchTo().defaultContent();
-    }
-
-    public void switchWindow(String inputLocator) {
-        //String originalWindow = driver.getWindowHandle();
-        //button.click(); //=> new window is opened
-        //Set<String> handles = driver.getWindowHandles();
-
-        //for (String hnd : handles) {
-        //    if (!hnd.equals(originalWindow))
-        //        driver.switchTo().window(hnd);
-        //}
-        //do some actions
-        //driver.close();
-
-        //driver.switchTo().window(originalWindow);
     }
 }
