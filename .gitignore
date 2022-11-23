@@ -1,0 +1,16 @@
+target/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Gauge ###
+.gauge
+logs/
+reports/
+
+# PLs look at!!!
+#       for clear git local cache -> git rm -r -f --cached <folder>
+#
