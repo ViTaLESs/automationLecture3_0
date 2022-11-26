@@ -13,8 +13,8 @@ import java.time.Duration;
 
 public class Test4_waits {
 
-    static WebDriver driver;
     static Logger log = Logger.getLogger(Test4_waits.class);
+    static WebDriver driver;
 
     static String siteUrl = "url";
     static String login = "login";
