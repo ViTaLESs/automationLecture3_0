@@ -11,12 +11,15 @@ import java.util.Set;
 
 public class Test3_switchToProfileWindow {
 
+    static String siteUrl = "url";
+    static String login = "login";
+    static String pass = "pass";
+
     public static void main(String[] args) {
 
         Logger log = Logger.getLogger(Test3_switchToProfileWindow.class);
 
         WebDriver driver = new ChromeDriver();
-        String siteUrl = "url";
         driver.get(siteUrl);
         log.debug("Switch to url - " + siteUrl);
 
@@ -27,7 +30,7 @@ public class Test3_switchToProfileWindow {
         }
 
         WebElement inputPasswordField = driver.findElement(By.xpath(".//input[@type='email']"));
-        inputPasswordField.sendKeys("login");
+        inputPasswordField.sendKeys(login);
         log.info("Auto test user login to the system");
         log.info("Send auto test user email");
         inputPasswordField.sendKeys(Keys.ENTER);
@@ -39,7 +42,7 @@ public class Test3_switchToProfileWindow {
         }
 
         WebElement passInput = driver.findElement(By.xpath(".//input[@name='passwd']"));
-        passInput.sendKeys("pass");
+        passInput.sendKeys(pass);
         log.info("Send auto test user pass");
 
         WebElement buttonNext = driver.findElement(By.xpath(".//input[@type='submit']"));

@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Test1_SearchByUid {
+    static String siteUrl = "url";
+    static String login = "login";
+    static String pass = "pass";
 
     public static void main(String[] args) {
         Logger log = Logger.getLogger(Test1_SearchByUid.class);
 
         WebDriver driver = new ChromeDriver();
-        String siteUrl = "URL";
+
         driver.get(siteUrl);
         log.debug("Switch to url - " + siteUrl);
 
@@ -24,7 +27,7 @@ public class Test1_SearchByUid {
         }
 
         WebElement inputPasswordField = driver.findElement(By.xpath(".//input[@type='email']"));
-        inputPasswordField.sendKeys("login");
+        inputPasswordField.sendKeys(login);
         log.info("Auto test user login to the system");
         log.info("Send auto test user email");
         inputPasswordField.sendKeys(Keys.ENTER);
@@ -36,7 +39,7 @@ public class Test1_SearchByUid {
         }
 
         WebElement passInput = driver.findElement(By.xpath(".//input[@name='passwd']"));
-        passInput.sendKeys("pass");
+        passInput.sendKeys(pass);
         log.info("Send auto test user pass");
 
         WebElement buttonNext = driver.findElement(By.xpath(".//input[@type='submit']"));

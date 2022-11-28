@@ -20,54 +20,58 @@ public class Test4_waits {
     static String login = "login";
     static String pass = "pass";
 
+    //TODO:
+    // 1. Show the locators
+    // 2. Sho9w Ignore file
+    //By locator = By.xpath(".//div[@class='ant-card-body']//input[@data-qa-modifier='player-search']");
+
 
     public static void main(String[] args) {
         driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         loginToTheSystem();
+        maximizeBrowserWindow();
 
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//div[@class='ant-card-body']//input[@data-qa-modifier='player-search']")));
         WebElement searchInputField = driver.findElement(By.xpath(".//div[@class='ant-card-body']//input[@data-qa-modifier='player-search']"));
         searchInputField.sendKeys("175598218");
         log.info("Type test user id into player search field - 175598218");
         searchInputField.sendKeys(Keys.ENTER);
+
+        driver.findElement(By.cssSelector("tr[data-row-key='balance'] span"));
+
+        //driver.quit();
     }
 
     private static void loginToTheSystem(){
-
         driver.get(siteUrl);
         log.debug("Switch to url - " + siteUrl);
 
+        //Fill login field
         By loginInputLocator = By.xpath(".//input[@type='email']");
-
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(loginInputLocator));
 
         driver.findElement(loginInputLocator).sendKeys(login);
         log.info("Send auto test user email");
+
         driver.findElement(loginInputLocator).sendKeys(Keys.ENTER);
 
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+        //Fill password field
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//input[@name='passwd']")));
         WebElement passInput = driver.findElement(By.xpath(".//input[@name='passwd']"));
         passInput.sendKeys(pass);
         log.info("Send auto test user pass");
 
         WebElement buttonNext = driver.findElement(By.xpath(".//input[@type='submit']"));
         buttonNext.click();
+    }
 
+    private static void maximizeBrowserWindow(){
         driver.manage().window().maximize();
         log.info("Maximize window");
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
