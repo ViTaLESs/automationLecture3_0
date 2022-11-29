@@ -13,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("A stack")
+@DisplayName("A")
 public class NestedTestsDemo {
     Stack<Object> stack;
 
@@ -24,7 +24,7 @@ public class NestedTestsDemo {
     }
 
     @Nested
-    @DisplayName("when new")
+    @DisplayName("B")
     class WhenNew {
 
         @BeforeEach
@@ -51,7 +51,7 @@ public class NestedTestsDemo {
         }
 
         @Nested
-        @DisplayName("after pushing an element")
+        @DisplayName("C")
         class AfterPushing {
 
             String anElement = "an element";

@@ -1,11 +1,12 @@
 package junit5.topics.basictests;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-@TestMethodOrder(OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.Random.class)
 public class OrderedTestsDemo {
 /*
     MethodOrderer.DisplayName: sorts test methods alphanumerically based on their display names (see display name generation precedence rules)
@@ -19,19 +20,19 @@ public class OrderedTestsDemo {
     MethodOrderer.Alphanumeric: sorts test methods alphanumerically based on their names and formal parameter lists; deprecated in favor of MethodOrderer.MethodName, to be removed in 6.0
     */
     @Test
-    @Order(1)
+    //@Order(1)
     void nullValues() {
         // perform assertions against null values
     }
 
     @Test
-    @Order(2)
+    //@Order(2)
     void emptyValues() {
         // perform assertions against empty values
     }
 
     @Test
-    @Order(3)
+    //@Order(3)
     void validValues() {
         // perform assertions against valid values
     }
