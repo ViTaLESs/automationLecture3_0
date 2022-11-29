@@ -23,6 +23,15 @@ public class Test4_waits {
     //TODO:
     // 1. Show the locators
     // 2. Sho9w Ignore file
+    // 3. SOLID
+    // 4. JUnit5
+    //      * pom + 3 modules
+    //      * basic tests (annotations, @Test, order of running, disabled test, DisplayName, DisplayNameGenerator, Tag)
+    //      * fixtures
+    //      * asserts
+    //      * parametrized
+    //      * parallel
+
     //By locator = By.xpath(".//div[@class='ant-card-body']//input[@data-qa-modifier='player-search']");
 
 
