@@ -9,7 +9,7 @@ class HamcrestTest {
 
     @Test
     void assertWithHamcrestMatcher() {
-        assertThat(2 + 1, equalTo(3));
+        assertThat(2 + 1, equalTo(4));
         assertThat("Foo", notNullValue());
         assertThat("Hello world", containsString("world"));
     }

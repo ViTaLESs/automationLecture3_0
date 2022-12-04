@@ -21,5 +21,4 @@ class ExceptionTest {
         assertThrows(RuntimeException.class, mySut::releaseId);
         System.out.println("End of test");
     }
-
 }
