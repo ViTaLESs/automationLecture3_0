@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 import static java.lang.invoke.MethodHandles.lookup;
 import static org.slf4j.LoggerFactory.getLogger;
 
-@Disabled
+//@Disabled
 @Isolated
 class IsolatedTest {
 

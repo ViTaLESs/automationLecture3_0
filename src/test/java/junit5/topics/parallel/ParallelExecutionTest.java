@@ -25,8 +25,8 @@ import static java.lang.invoke.MethodHandles.lookup;
 import static org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT;
 import static org.slf4j.LoggerFactory.getLogger;
 
-@Disabled
-@Execution(CONCURRENT)
+//@Disabled
+//@Execution(CONCURRENT)
 class ParallelExecutionTest {
 
     //TODO:
